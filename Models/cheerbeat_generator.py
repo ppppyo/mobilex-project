@@ -10,7 +10,7 @@ class InputModel(BaseModel):
         alias='word',
         description='입력할 가사를 넣어주세요!',
         default='음냐음냐',
-        min_length=5000,
+        min_length=0,
         max_length=5000,
         pattern=rf'^[a-z|가-힣]{{{MAX_LENGTH}}}$',
     )

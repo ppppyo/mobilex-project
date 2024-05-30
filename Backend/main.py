@@ -10,9 +10,7 @@ from fastapi.middleware.cors import CORSMiddleware
 load_dotenv()
 
 API_URL = "https://api-inference.huggingface.co/models/suno/bark"
-API_TOKEN = os.getenv("HF_API_TOKEN")
-
-headers = {"Authorization": f"Bearer {API_TOKEN}"}
+headers = {"Authorization": "Bearer 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"}
 
 app = FastAPI()
 
@@ -29,10 +27,8 @@ class SunoRequest(BaseModel):
     inputs: str
 
 def query(payload):
-    response = requests.post(API_URL, headers=headers, json=payload)
-    if response.status_code != 200:
-        raise Exception(f"Request failed with status code {response.status_code}: {response.text}")
-    return response.content
+	response = requests.post(API_URL, headers=headers, json=payload)
+	return response.content
 
 @app.post("/api/v1/generate-audio/")
 async def generate_audio(request: SunoRequest):
