@@ -2,7 +2,6 @@ import httpx
 from pydantic import BaseModel, Field
 from pydantic_core import Url
 
-
 class MobileXClient(BaseModel):
     base_url: Url = Field(
         default=Url('http://localhost:8000'),
